@@ -11,6 +11,7 @@ Then you have to setup raspi
         pip3 install PyYAML mavproxy --user
         sudo pip install pymavlink
         sudo pip install mavproxy
+        sudo pip install dronekit
   4- After that you have to enable serial port and disable serial control
      for that you have to go to terminal and run sudo rapi-confi 
      that you pop up a window in that go to
@@ -26,6 +27,21 @@ Then you have to setup raspi
       dtoverlay=pi3-disable-bt
    Now you raspi is setup
 Now you have to opean misson planner and in that you have to set baudrate of telemetery2 as 921600
+
+Now your raspi is ready for automation so connect properly it with pixhawk 
+
+To cheeck that it is ready use below command in raspi terminal 
+  mavproxy.py --master=/dev/ttyS0 --baudrate 921600 --aircraft MyCopter
+As soon as you run this you will get all drone parmeters on rapi terminal 
+
+Now make drone start and turn it into guided mode 
+
+After that place given automation script in raspi and after that place you vehicle on flyable zone 
+and run command 
+python AutomationScript --conect /dev/ttyS0
+Now you will see that drone will take off and after reaching at 15m altitute it will stop and then land 
+
+
       
       
       
